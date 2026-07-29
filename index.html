@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sugbahan | Bacolod's Best Grilled Chicken Inasal</title>
+<meta name="description" content="Sugbahan - Taste the Difference, Bacolod's Best Grilled Chicken. Authentic Chicken Inasal, Kansi, Sinigang and grilled Filipino favorites. Order via Foodpanda or GrabFood.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+
+<style>
+  :root{
+    --charcoal: #0e0e0e;
+    --charcoal-2: #161616;
+    --charcoal-3: #1e1e1e;
+    --wood: #131313;
+    --terracotta: #d81920;
+    --terracotta-light: #f2541f;
+    --gold: #f5c518;
+    --cream: #faf1e4;
+    --cream-dim: #c9c4ba;
+    --ink: #080808;
+    --radius: 14px;
+    --shadow: 0 20px 45px rgba(0,0,0,.35);
+    --maxw: 1180px;
+    --font-head: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+    --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; scroll-padding-top:76px; }
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    background:var(--charcoal);
+    color:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;margin:0;padding:0;}
+  h1,h2,h3,h4{font-family:var(--font-head); margin:0; color:#fff; letter-spacing:.2px;}
+  p{margin:0;}
+  .container{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  section{position:relative;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.78rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--terracotta-light); margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--terracotta-light);display:inline-block;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    padding:15px 30px; border-radius:100px; font-weight:700; font-size:.95rem;
+    border:2px solid transparent; cursor:pointer; transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+    white-space:nowrap;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-primary{ background:linear-gradient(135deg,var(--terracotta-light),var(--terracotta)); color:#fff; box-shadow:0 10px 30px rgba(216,25,32,.4); }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 16px 36px rgba(216,25,32,.55); }
+  .btn-outline{ background:transparent; border-color:rgba(250,241,228,.35); color:var(--cream); }
+  .btn-outline:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-3px); }
+  .btn-light{ background:var(--cream); color:var(--ink); }
+  .btn-light:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(0,0,0,.35); }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    padding:18px 0; transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  header .container{ display:flex; align-items:center; justify-content:space-between; }
+  header.scrolled{ background:rgba(23,19,16,.92); backdrop-filter:blur(10px); padding:10px 0; box-shadow:0 6px 24px rgba(0,0,0,.35); }
+  .brand{ display:flex; align-items:center; gap:12px; font-family:var(--font-head); font-weight:800; font-size:1.4rem; color:var(--terracotta-light); }
+  .brand-logo{
+    width:54px; height:44px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .brand-logo img{ width:100%; height:100%; object-fit:contain; display:block; filter:drop-shadow(0 4px 10px rgba(0,0,0,.5)); }
+
+  nav.desktop-nav ul{ display:flex; gap:34px; }
+  nav.desktop-nav a{
+    font-weight:600; font-size:.95rem; color:var(--cream-dim); position:relative; padding:6px 0;
+    transition:color .2s ease;
+  }
+  nav.desktop-nav a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--terracotta-light);
+    transition:width .25s ease;
+  }
+  nav.desktop-nav a:hover, nav.desktop-nav a.active{ color:#fff; }
+  nav.desktop-nav a:hover::after, nav.desktop-nav a.active::after{ width:100%; }
+
+  .header-cta{ display:flex; align-items:center; gap:16px; }
+  .header-cta .btn{ padding:11px 22px; font-size:.85rem; }
+
+  .hamburger{
+    display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; z-index:1200;
+  }
+  .hamburger span{ width:26px; height:2px; background:#fff; border-radius:2px; transition:.3s ease; }
+  .hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2){ opacity:0; }
+  .hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+  .mobile-nav{
+    position:fixed; inset:0; background:rgba(20,15,12,.98); z-index:999;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:32px;
+    transform:translateY(-100%); transition:transform .4s cubic-bezier(.77,0,.18,1);
+  }
+  .mobile-nav.open{ transform:translateY(0); }
+  .mobile-nav a{ font-size:1.5rem; font-weight:700; color:var(--cream); font-family:var(--font-head); }
+  .mobile-nav a:hover{ color:var(--terracotta-light); }
+  .mobile-nav .btn{ margin-top:10px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh; display:flex; align-items:center; position:relative; overflow:hidden;
+    padding:150px 0 90px;
+    background:
+      radial-gradient(ellipse 90% 60% at 80% 10%, rgba(216,25,32,.25), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 15% 90%, rgba(245,197,24,.14), transparent 60%),
+      linear-gradient(160deg, var(--ink) 0%, var(--charcoal) 45%, var(--charcoal-3) 100%);
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0; opacity:.5; pointer-events:none;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 2px, transparent 2px, transparent 26px);
+  }
+  .embers{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+  .ember{
+    position:absolute; bottom:-20px; border-radius:50%;
+    background:radial-gradient(circle, var(--gold), var(--terracotta) 70%, transparent);
+    opacity:.85; filter:blur(.3px);
+    animation:float-up linear infinite;
+  }
+  @keyframes float-up{
+    0%{ transform:translateY(0) translateX(0); opacity:0; }
+    10%{ opacity:.9; }
+    100%{ transform:translateY(-110vh) translateX(var(--drift,20px)); opacity:0; }
+  }
+  .hero .container{ position:relative; z-index:2; display:grid; grid-template-columns:1.15fr .85fr; gap:50px; align-items:center; }
+  .hero-badge-row{ display:flex; gap:12px; align-items:center; margin-bottom:22px; flex-wrap:wrap; }
+  .pill{
+    display:inline-flex; align-items:center; gap:7px; padding:7px 16px; border-radius:100px;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); font-size:.78rem; font-weight:600; color:var(--cream-dim);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.4vw, 4.1rem); line-height:1.06; font-weight:800; margin-bottom:20px;
+  }
+  .hero h1 em{ font-style:normal; color:var(--terracotta-light); background:linear-gradient(120deg,var(--gold),var(--terracotta-light)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero .lede{ font-size:1.15rem; color:var(--cream-dim); max-width:520px; margin-bottom:34px; }
+  .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:44px; }
+
+  .partner-badges{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+  .partner-badges .label{ font-size:.78rem; color:var(--cream-dim); text-transform:uppercase; letter-spacing:1.5px; font-weight:700; margin-right:4px; }
+  .badge-chip{
+    display:flex; align-items:center; gap:9px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14);
+    padding:10px 18px; border-radius:100px; font-weight:700; font-size:.85rem; transition:.25s ease;
+  }
+  .badge-chip:hover{ background:rgba(255,255,255,.14); transform:translateY(-2px); }
+  .badge-chip .dot{ width:9px; height:9px; border-radius:50%; }
+  .badge-chip.pink .dot{ background:#D6006F; box-shadow:0 0 10px #D6006F; }
+  .badge-chip.green .dot{ background:#00B14F; box-shadow:0 0 10px #00B14F; }
+
+  .hero-visual{ position:relative; display:flex; align-items:center; justify-content:center; }
+  .plate{
+    width:100%; max-width:420px; aspect-ratio:1/1; border-radius:50%; position:relative;
+    background:radial-gradient(circle at 35% 30%, #262626, #101010 70%);
+    box-shadow: 0 30px 70px rgba(0,0,0,.55), inset 0 0 0 10px rgba(255,255,255,.04), inset 0 0 40px rgba(0,0,0,.5);
+    display:flex; align-items:center; justify-content:center;
+    animation:float 6s ease-in-out infinite;
+  }
+  .plate::before{
+    content:""; position:absolute; inset:14px; border-radius:50%; border:2px dashed rgba(245,197,24,.25); z-index:2;
+  }
+  .plate .plate-photo{
+    position:absolute; inset:14px; width:calc(100% - 28px); height:calc(100% - 28px);
+    border-radius:50%; object-fit:cover; z-index:1;
+  }
+  @keyframes float{ 0%,100%{ transform:translateY(0px);} 50%{ transform:translateY(-16px);} }
+  .stat-card{
+    position:absolute; z-index:3; background:rgba(27,21,18,.9); border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(6px);
+    padding:14px 18px; border-radius:var(--radius); box-shadow:var(--shadow); text-align:left;
+  }
+  .stat-card.one{ top:28px; left:28px; }
+  .stat-card.two{ bottom:0; right:-16px; }
+  .stat-card strong{ display:block; font-size:1.3rem; color:var(--gold); font-family:var(--font-head); }
+  .stat-card span{ font-size:.75rem; color:var(--cream-dim); }
+
+  .hero-seal{
+    position:absolute; top:-46px; left:65%; transform:translateX(-50%);
+    width:150px; height:123px; display:flex; align-items:center; justify-content:center;
+    z-index:3; animation:seal-float 6s ease-in-out infinite;
+  }
+  .hero-seal img{ width:100%; height:100%; object-fit:contain; display:block; filter:drop-shadow(0 14px 30px rgba(0,0,0,.55)); }
+  @keyframes seal-float{ 0%,100%{ transform:translateX(-50%) rotate(-3deg) translateY(0); } 50%{ transform:translateX(-50%) rotate(-3deg) translateY(-10px); } }
+
+  .scroll-cue{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--cream-dim); font-size:.75rem; letter-spacing:2px; text-transform:uppercase; }
+  .scroll-cue .line{ width:1px; height:34px; background:linear-gradient(var(--terracotta-light), transparent); animation:scrollline 1.8s ease-in-out infinite; }
+  @keyframes scrollline{ 0%{opacity:0; transform:scaleY(0);} 50%{opacity:1; transform:scaleY(1);} 100%{opacity:0; transform:scaleY(0);} }
+
+  /* ---------- SECTION HEAD ---------- */
+  .section-head{ max-width:640px; margin-bottom:52px; }
+  .section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+  .section-head h2{ font-size:clamp(1.9rem, 3.6vw, 2.7rem); font-weight:800; }
+  .section-head p{ color:var(--cream-dim); margin-top:14px; font-size:1.05rem; }
+
+  /* ---------- ABOUT ---------- */
+  .about{ padding:110px 0; background:var(--charcoal-2); }
+  .about .container{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  .about-visual{ position:relative; }
+  .about-frame{
+    aspect-ratio:4/5; border-radius:20px; background:
+      radial-gradient(circle at 30% 20%, rgba(242,84,31,.35), transparent 55%),
+      linear-gradient(160deg,#202020,#0c0c0c);
+    box-shadow:var(--shadow); position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .about-frame::after{
+    content:""; position:absolute; inset:0;
+    background-image:repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 2px, transparent 2px 22px);
+  }
+  .about-frame img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+  .about-frame span{ font-size:6rem; z-index:1; }
+  .about-badge{
+    position:absolute; bottom:-24px; left:-24px; background:linear-gradient(135deg,var(--terracotta-light),var(--terracotta));
+    padding:20px 26px; border-radius:16px; box-shadow:0 20px 40px rgba(216,25,32,.4); text-align:center;
+  }
+  .about-badge strong{ display:block; font-size:1.8rem; font-family:var(--font-head); color:#fff; }
+  .about-badge span{ font-size:.78rem; color:rgba(255,255,255,.9); text-transform:uppercase; letter-spacing:1px; }
+
+  .highlight-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:34px; }
+  .highlight-card{
+    background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius);
+    padding:22px; transition:.25s ease;
+  }
+  .highlight-card:hover{ background:rgba(255,255,255,.06); transform:translateY(-4px); border-color:rgba(242,84,31,.4); }
+  .highlight-card .icon{ font-size:1.7rem; margin-bottom:10px; display:block; }
+  .highlight-card h4{ font-size:1rem; margin-bottom:6px; }
+  .highlight-card p{ font-size:.88rem; color:var(--cream-dim); }
+
+  /* ---------- MENU ---------- */
+  .menu{ padding:110px 0; background:var(--charcoal); position:relative; }
+  .filter-bar{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:48px; }
+  .filter-btn{
+    padding:11px 22px; border-radius:100px; border:1px solid rgba(255,255,255,.14); background:transparent;
+    color:var(--cream-dim); font-weight:700; font-size:.85rem; cursor:pointer; transition:.25s ease;
+  }
+  .filter-btn:hover{ color:#fff; border-color:rgba(242,84,31,.5); }
+  .filter-btn.active{ background:linear-gradient(135deg,var(--terracotta-light),var(--terracotta)); color:#fff; border-color:transparent; box-shadow:0 8px 22px rgba(216,25,32,.35); }
+
+  .menu-notes{ display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-bottom:40px; }
+  .note-chip{ display:flex; align-items:center; gap:8px; font-size:.82rem; color:var(--gold); background:rgba(245,197,24,.08); border:1px solid rgba(245,197,24,.3); padding:8px 16px; border-radius:100px; }
+
+  .menu-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(270px,1fr)); gap:22px;
+  }
+  .menu-card{
+    background:linear-gradient(160deg, var(--charcoal-3), var(--charcoal-2));
+    border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); overflow:hidden;
+    display:flex; flex-direction:column; transition:.3s ease; opacity:1; transform:scale(1);
+  }
+  .menu-card.hide{ display:none; }
+  .menu-card:hover{ border-color:rgba(242,84,31,.5); transform:translateY(-6px); box-shadow:var(--shadow); }
+  .menu-card-photo{ position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--charcoal-3); }
+  .menu-card-photo img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+  .menu-card:hover .menu-card-photo img{ transform:scale(1.08); }
+  .menu-card-photo::after{
+    content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%);
+  }
+  .menu-card-cat{
+    position:absolute; top:10px; left:10px; z-index:1; width:34px; height:34px; border-radius:50%;
+    background:rgba(23,19,16,.72); backdrop-filter:blur(3px); display:flex; align-items:center; justify-content:center; font-size:1.05rem;
+  }
+  .menu-card-photo .price{
+    position:absolute; right:10px; bottom:10px; z-index:1; background:rgba(23,19,16,.82); backdrop-filter:blur(3px);
+    padding:6px 14px; border-radius:100px;
+  }
+  .menu-card-body{ padding:18px 22px 22px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .menu-card h3{ font-size:1.08rem; font-weight:700; margin-bottom:4px; }
+  .menu-card .price{ font-family:var(--font-head); font-weight:800; color:var(--gold); font-size:1.1rem; white-space:nowrap; }
+  .menu-card .tag{
+    align-self:flex-start; font-size:.72rem; font-weight:700; color:var(--terracotta-light);
+    background:rgba(216,25,32,.12); border:1px solid rgba(216,25,32,.35); padding:4px 10px; border-radius:100px;
+  }
+  .menu-card .group-label{ font-size:.75rem; color:var(--cream-dim); text-transform:uppercase; letter-spacing:1px; }
+
+  /* ---------- ORDER ONLINE ---------- */
+  .order{
+    padding:100px 0; text-align:center;
+    background: linear-gradient(160deg, var(--wood), var(--ink));
+    position:relative; overflow:hidden;
+  }
+  .order::before{
+    content:""; position:absolute; inset:0; opacity:.6;
+    background:radial-gradient(circle at 20% 20%, rgba(216,25,32,.25), transparent 55%), radial-gradient(circle at 85% 80%, rgba(245,197,24,.18), transparent 55%);
+  }
+  .order .container{ position:relative; z-index:1; }
+  .order-cards{ display:grid; grid-template-columns:1fr 1fr; gap:26px; max-width:760px; margin:46px auto 0; }
+  .order-card{
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:20px; padding:36px 28px;
+    display:flex; flex-direction:column; align-items:center; gap:14px; transition:.3s ease;
+  }
+  .order-card:hover{ transform:translateY(-8px); background:rgba(255,255,255,.09); box-shadow:var(--shadow); }
+  .order-card .logo-dot{
+    width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.8rem;
+    margin-bottom:6px;
+  }
+  .order-card.pink .logo-dot{ background:#D6006F; box-shadow:0 10px 26px rgba(214,0,111,.45); }
+  .order-card.green .logo-dot{ background:#00B14F; box-shadow:0 10px 26px rgba(0,177,79,.45); }
+  .order-card h3{ font-size:1.2rem; }
+  .order-card p{ color:var(--cream-dim); font-size:.9rem; }
+  .direct-note{ margin-top:40px; color:var(--cream-dim); font-size:.95rem; }
+  .direct-note a{ color:var(--gold); font-weight:700; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ padding:110px 0; background:var(--charcoal-2); }
+  .contact .container{ display:grid; grid-template-columns:.9fr 1.1fr; gap:60px; }
+  .contact-info-list{ display:flex; flex-direction:column; gap:22px; margin-top:30px; }
+  .contact-info-item{ display:flex; gap:16px; align-items:flex-start; }
+  .contact-info-item .icon-box{
+    width:46px; height:46px; border-radius:12px; background:rgba(216,25,32,.15); border:1px solid rgba(216,25,32,.35);
+    display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;
+  }
+  .contact-info-item h4{ font-size:.95rem; margin-bottom:3px; }
+  .contact-info-item p, .contact-info-item a{ color:var(--cream-dim); font-size:.92rem; }
+  .contact-info-item a:hover{ color:var(--gold); }
+  .contact-info-item .directions-link{ display:inline-block; margin-top:6px; color:var(--gold); font-weight:700; font-size:.85rem; }
+  .contact-info-item .directions-link:hover{ color:var(--terracotta-light); }
+
+  .contact-form{
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:20px; padding:36px;
+  }
+  .map-embed{
+    grid-column:1/-1; margin-top:14px; border-radius:20px; overflow:hidden;
+    border:1px solid rgba(255,255,255,.1); box-shadow:var(--shadow);
+  }
+  .map-embed iframe{ width:100%; height:360px; display:block; border:0; }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  .form-group{ display:flex; flex-direction:column; gap:8px; margin-bottom:16px; }
+  .form-group label{ font-size:.82rem; font-weight:700; color:var(--cream-dim); }
+  .form-group input, .form-group textarea{
+    background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.14); border-radius:10px; padding:13px 16px;
+    color:#fff; font-family:inherit; font-size:.95rem; resize:vertical; transition:.2s ease;
+  }
+  .form-group input:focus, .form-group textarea:focus{ outline:none; border-color:var(--terracotta-light); box-shadow:0 0 0 3px rgba(216,25,32,.2); }
+  .contact-form .btn{ width:100%; margin-top:6px; }
+  .form-success{
+    display:none; margin-top:16px; padding:14px 18px; background:rgba(0,177,79,.12); border:1px solid rgba(0,177,79,.4);
+    border-radius:10px; color:#7be6a6; font-size:.88rem; font-weight:600;
+  }
+  .form-success.show{ display:block; }
+  .form-error{
+    display:none; margin-top:16px; padding:14px 18px; background:rgba(216,25,32,.12); border:1px solid rgba(216,25,32,.4);
+    border-radius:10px; color:#ff9a92; font-size:.88rem; font-weight:600;
+  }
+  .form-error.show{ display:block; }
+  .contact-form .btn:disabled{ opacity:.6; cursor:not-allowed; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--ink); padding:60px 0 26px; border-top:1px solid rgba(255,255,255,.06); }
+  .footer-top{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:40px; margin-bottom:30px; border-bottom:1px solid rgba(255,255,255,.07); }
+  .footer-brand p{ color:var(--cream-dim); font-size:.9rem; margin-top:14px; max-width:280px; }
+  .footer-col h4{ font-size:.9rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:18px; color:var(--cream-dim); }
+  .footer-col ul li{ margin-bottom:11px; }
+  .footer-col a{ font-size:.9rem; color:var(--cream-dim); transition:.2s ease; }
+  .footer-col a:hover{ color:var(--gold); padding-left:3px; }
+  .footer-social{ display:flex; gap:10px; margin-top:16px; }
+  .footer-social a{
+    width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.06); display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(255,255,255,.1);
+  }
+  .footer-social a:hover{ background:var(--terracotta); border-color:var(--terracotta); }
+  .footer-bottom{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; font-size:.82rem; color:var(--cream-dim); }
+  .footer-bottom .badges{ display:flex; gap:10px; }
+  .footer-bottom .badges span{ background:rgba(255,255,255,.06); padding:5px 12px; border-radius:100px; font-size:.75rem; }
+
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    nav.desktop-nav, .header-cta .btn-outline{ display:none; }
+    .hamburger{ display:flex; }
+    .hero .container{ grid-template-columns:1fr; text-align:center; }
+    .hero-badge-row, .hero-ctas, .partner-badges{ justify-content:center; }
+    .hero .lede{ margin-left:auto; margin-right:auto; }
+    .hero-visual{ margin-top:20px; }
+    .about .container{ grid-template-columns:1fr; }
+    .about-visual{ width:100%; max-width:380px; margin:0 auto 50px; }
+    .contact .container{ grid-template-columns:1fr; }
+    .footer-top{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:640px){
+    .order-cards{ grid-template-columns:1fr; }
+    .highlight-grid{ grid-template-columns:1fr; }
+    .form-row{ grid-template-columns:1fr; }
+    .footer-top{ grid-template-columns:1fr; gap:30px; }
+    .footer-bottom{ flex-direction:column; text-align:center; }
+    .stat-card{ position:static; margin-top:14px; display:inline-block; }
+    .plate{ max-width:300px; }
+    .header-cta .btn-primary{ display:none; }
+    .brand{ font-size:1.1rem; gap:8px; }
+    .brand-logo{ width:40px; height:33px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="siteHeader">
+  <div class="container">
+    <a href="#home" class="brand"><span class="brand-logo"><img src="assets/logo.png" alt="Sugbahan logo"></span>Sugbahan</a>
+    <nav class="desktop-nav">
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#menu" class="nav-link">Menu</a></li>
+        <li><a href="#order" class="nav-link">Order</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:+6328442743" class="btn btn-outline">Call Us</a>
+      <a href="#menu" class="btn btn-primary">Order Now</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home" class="mobile-link">Home</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#menu" class="mobile-link">Menu</a>
+  <a href="#order" class="mobile-link">Order</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#menu" class="btn btn-primary mobile-link">Order Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="embers" id="embers"></div>
+  <div class="container">
+    <div class="hero-copy">
+      <div class="hero-badge-row">
+        <span class="pill">🔥 Bacolod-Style Chicken Inasal</span>
+        <span class="pill">📍 Fresh off the Charcoal, Daily</span>
+      </div>
+      <h1>Taste the Difference, <em>Bacolod's Best</em> Grilled Chicken</h1>
+      <p class="lede">Smoky, sizzling, and marinated the authentic way — Sugbahan brings Bacolod's legendary chicken inasal and grilled Filipino comfort food straight to your table.</p>
+      <div class="hero-ctas">
+        <a href="#menu" class="btn btn-primary">🍽️ View Menu</a>
+        <a href="#order" class="btn btn-outline">🛵 Order Now</a>
+      </div>
+      <div class="partner-badges">
+        <span class="label">Order via</span>
+        <a href="https://www.foodpanda.ph" target="_blank" rel="noopener" class="badge-chip pink"><span class="dot"></span> Foodpanda Certified Partner</a>
+        <a href="https://food.grab.com/ph/en/" target="_blank" rel="noopener" class="badge-chip green"><span class="dot"></span> GrabFood Certified Partner</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="plate">
+        <div class="hero-seal"><img src="assets/logo.png" alt="Sugbahan official logo"></div>
+        <img class="plate-photo" src="assets/hero-plate.jpg" alt="Sugbahan PechoPak ala carte, grilled chicken inasal">
+        <div class="stat-card one"><strong>100%</strong><span>Charcoal Grilled</span></div>
+        <div class="stat-card two"><strong>10 min</strong><span>Solo Meal Prep</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-visual reveal">
+      <div class="about-frame"><img src="assets/about-resto.jpg" alt="Sugbahan restaurant dining area"></div>
+      <div class="about-badge"><strong>Est. Bacolod</strong><span>Grill Tradition</span></div>
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow reveal">Our Story</div>
+      <h2 class="reveal">Authentic Bacolod Flavor, Grilled to Perfection</h2>
+      <p style="color:var(--cream-dim); margin-top:18px; font-size:1.05rem;" class="reveal">
+        Sugbahan means "grilling place" — and that's exactly our craft. Every piece of chicken is marinated in a signature blend of native vinegar, calamansi, and lemongrass, then slow-grilled over real charcoal for that unmistakable smoky char Bacolod is famous for. From our comforting Kansi and Sinigang to our grilled bangus, tilapia, and liempo, every dish is Filipino comfort food done the honest, authentic way.
+      </p>
+      <div class="highlight-grid">
+        <div class="highlight-card reveal">
+          <span class="icon">🔥</span>
+          <h4>Real Charcoal Grilling</h4>
+          <p>No shortcuts — just open-flame char and smoky depth in every bite.</p>
+        </div>
+        <div class="highlight-card reveal">
+          <span class="icon">🌿</span>
+          <h4>Signature Bacolod Marinade</h4>
+          <p>Native vinegar, calamansi & lemongrass — the real inasal recipe.</p>
+        </div>
+        <div class="highlight-card reveal">
+          <span class="icon">🍲</span>
+          <h4>Filipino Comfort Classics</h4>
+          <p>Kansi, Sinigang, and Bulalo made rich, warm, and homestyle.</p>
+        </div>
+        <div class="highlight-card reveal">
+          <span class="icon">⚡</span>
+          <h4>Fast Solo Meals</h4>
+          <p>Craving something quick? Solo meals ready in just 10 minutes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow" style="justify-content:center;">The Menu</div>
+      <h2>Grilled Favorites & Comfort Classics</h2>
+      <p>Every category, every price — pick your craving. Filter below to find it fast.</p>
+    </div>
+
+    <div class="menu-notes reveal">
+      <span class="note-chip">🌶️ Add ₱10.00 for Spicy (Inasal)</span>
+      <span class="note-chip">👥 Kansi & Sinigang good for 2 Pax</span>
+      <span class="note-chip">⏱️ Solo Meals ready in 10 mins</span>
+      <span class="note-chip">🍚 Solo Meals are served w/ Rice</span>
+    </div>
+
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="inasal">Inasal</button>
+      <button class="filter-btn" data-filter="kansi-sinigang">Kansi &amp; Sinigang</button>
+      <button class="filter-btn" data-filter="grilled">Grilled</button>
+      <button class="filter-btn" data-filter="solo">Solo Meals</button>
+      <button class="filter-btn" data-filter="sides">Sides</button>
+    </div>
+
+    <div class="menu-grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<!-- ORDER ONLINE -->
+<section class="order" id="order">
+  <div class="container">
+    <div class="section-head center reveal" style="margin:0 auto;">
+      <div class="eyebrow" style="justify-content:center;">Delivery</div>
+      <h2>Order Online — Fast, Fresh, Delivered</h2>
+      <p>Craving Sugbahan right now? We're a certified partner on both major delivery apps.</p>
+    </div>
+    <div class="order-cards">
+      <a href="https://www.foodpanda.ph" target="_blank" rel="noopener" class="order-card pink reveal">
+        <div class="logo-dot">🐼</div>
+        <h3>Foodpanda</h3>
+        <p>Certified Partner — order Sugbahan for delivery via Foodpanda.</p>
+        <span class="btn btn-light">Order on Foodpanda</span>
+      </a>
+      <a href="https://food.grab.com/ph/en/" target="_blank" rel="noopener" class="order-card green reveal">
+        <div class="logo-dot">🛵</div>
+        <h3>GrabFood</h3>
+        <p>Certified Partner — order Sugbahan for delivery via GrabFood.</p>
+        <span class="btn btn-light">Order on GrabFood</span>
+      </a>
+    </div>
+    <p class="direct-note reveal">Prefer to order directly? Call or message us at <a href="tel:+639281489134">+63 928 148 9134</a></p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-info">
+      <div class="eyebrow reveal">Get In Touch</div>
+      <h2 class="reveal">Visit, Call, or Send Us a Message</h2>
+      <p style="color:var(--cream-dim); margin-top:14px;" class="reveal">Have a question, a group order, or a catering request? We'd love to hear from you.</p>
+      <div class="contact-info-list">
+        <div class="contact-info-item reveal">
+          <div class="icon-box">📍</div>
+          <div>
+            <h4>Location</h4>
+            <p>31 Monaco Street, Ciudad Grande II, Ortigas Ave. Ext., Rosario, Pasig City</p>
+            <a class="directions-link" href="https://www.google.com/maps/search/?api=1&query=31+Monaco+Street+Brgy+Rosario+Pasig+City" target="_blank" rel="noopener">Get Directions →</a>
+          </div>
+        </div>
+        <div class="contact-info-item reveal">
+          <div class="icon-box">✉️</div>
+          <div><h4>Email</h4><a href="mailto:sugbahanfeels@gmail.com">sugbahanfeels@gmail.com</a></div>
+        </div>
+        <div class="contact-info-item reveal">
+          <div class="icon-box">📱</div>
+          <div><h4>Mobile</h4><a href="tel:+639281489134">+63 928 148 9134</a></div>
+        </div>
+        <div class="contact-info-item reveal">
+          <div class="icon-box">☎️</div>
+          <div>
+            <h4>Telephone</h4>
+            <p><a href="tel:+6328442743">+63 (02) 8442 0743</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item reveal">
+          <div class="icon-box">🛵</div>
+          <div>
+            <h4>Delivery Partners</h4>
+            <p>Foodpanda Certified Partner &amp; GrabFood Certified Partner</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" id="contactForm">
+      <input type="hidden" name="_subject" value="New message from Sugbahan website">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">Full Name</label>
+          <input type="text" id="fname" name="name" required placeholder="Juan Dela Cruz">
+        </div>
+        <div class="form-group">
+          <label for="fphone">Phone Number</label>
+          <input type="tel" id="fphone" name="phone" required placeholder="09XX XXX XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="femail">Email Address</label>
+        <input type="email" id="femail" name="email" required placeholder="you@email.com">
+      </div>
+      <div class="form-group">
+        <label for="fmessage">Message</label>
+        <textarea id="fmessage" name="message" rows="4" required placeholder="Tell us about your order, reservation, or inquiry..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="contactSubmitBtn">Send Message</button>
+      <div class="form-success" id="formSuccess">✅ Thanks! Your message has been received — we'll get back to you shortly.</div>
+      <div class="form-error" id="formError">⚠️ Something went wrong sending your message. Please call or email us directly.</div>
+    </form>
+
+    <div class="map-embed reveal">
+      <iframe
+        src="https://www.google.com/maps?q=31+Monaco+Street+Brgy+Rosario+Pasig+City&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Sugbahan location map"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="brand"><span class="brand-logo"><img src="assets/logo.png" alt="Sugbahan logo"></span>Sugbahan</a>
+        <p>Taste the Difference, Bacolod's Best Grilled Chicken. Authentic inasal and Filipino grilled comfort food, made fresh daily.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="https://www.foodpanda.ph" target="_blank" rel="noopener" aria-label="Foodpanda">🐼</a>
+          <a href="https://food.grab.com/ph/en/" target="_blank" rel="noopener" aria-label="GrabFood">🛵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#menu">Full Menu</a></li>
+          <li><a href="#order">Order Online</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Menu Categories</h4>
+        <ul>
+          <li><a href="#menu" data-filter-link="inasal">Chicken Inasal</a></li>
+          <li><a href="#menu" data-filter-link="kansi-sinigang">Kansi &amp; Sinigang</a></li>
+          <li><a href="#menu" data-filter-link="grilled">Grilled Favorites</a></li>
+          <li><a href="#menu" data-filter-link="solo">Solo Meals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:sugbahanfeels@gmail.com">sugbahanfeels@gmail.com</a></li>
+          <li><a href="tel:+639281489134">+63 928 148 9134</a></li>
+          <li><a href="tel:+6328442743">+63 (02) 8442 0743</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span id="year"></span>
+      <div class="badges">
+        <span>🐼 Foodpanda Certified</span>
+        <span>🛵 GrabFood Certified</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- MENU DATA ---------- */
+  const menuData = [
+    // Chicken Inasal
+    { cat:"inasal", group:"Chicken Inasal", icon:"🍗", name:"Pecho with Rice", price:199, tag:"+₱10 Spicy", img:"assets/menu/pecho.jpg" },
+    { cat:"inasal", group:"Chicken Inasal", icon:"🍗", name:"Pa-a with Rice", price:180, tag:"+₱10 Spicy", img:"assets/menu/paa-with-rice.jpg" },
+    { cat:"inasal", group:"Chicken Inasal", icon:"🍗", name:"Pakpak (2x) with Rice", price:170, tag:"+₱10 Spicy", img:"assets/menu/pakpak-with-rice.jpg" },
+    { cat:"inasal", group:"Chicken Inasal", icon:"🍗", name:"Pecho Ala-carte", price:170, tag:"+₱10 Spicy", img:"assets/menu/pecho.jpg" },
+    { cat:"inasal", group:"Chicken Inasal", icon:"🍗", name:"Pa-a Ala-carte", price:150, tag:"+₱10 Spicy", img:"assets/menu/paa-ala-carte.jpg" },
+    { cat:"inasal", group:"Chicken Inasal", icon:"🍗", name:"Pakpak (2x) Ala-carte", price:140, tag:"+₱10 Spicy", img:"assets/menu/pakpak-ala-carte.jpg" },
+    // Kansi & Sinigang
+    { cat:"kansi-sinigang", group:"Kansi & Sinigang", icon:"🍲", name:"Kansi Beef", price:340, tag:"Good for 2 Pax", img:"assets/menu/kansi-beef.jpg" },
+    { cat:"kansi-sinigang", group:"Kansi & Sinigang", icon:"🍲", name:"Kansi Pata", price:260, tag:"Good for 2 Pax", img:"assets/menu/kansi-pata.jpg" },
+    { cat:"kansi-sinigang", group:"Kansi & Sinigang", icon:"🍲", name:"Sinigang na Hipon", price:340, tag:"Good for 2 Pax", img:"assets/menu/sinigang-hipon.jpg" },
+    { cat:"kansi-sinigang", group:"Kansi & Sinigang", icon:"🍲", name:"Sinigang na Baboy", price:270, tag:"Good for 2 Pax", img:"assets/menu/sinigang-baboy.jpg" },
+    { cat:"kansi-sinigang", group:"Kansi & Sinigang", icon:"🍲", name:"Sinigang na Bangus", price:230, tag:"Good for 2 Pax", img:"assets/menu/sinigang-bangus.jpg" },
+    { cat:"kansi-sinigang", group:"Kansi & Sinigang", icon:"🍲", name:"Bulalo", price:360, tag:"Good for 2 Pax", img:"assets/menu/bulalo.jpg" },
+    // Grilled Favorites
+    { cat:"grilled", group:"Grilled Favorites", icon:"🐟", name:"Grilled Bangus (Whole) w/ Rice", price:220, img:"assets/menu/bangus.jpg" },
+    { cat:"grilled", group:"Grilled Favorites", icon:"🐟", name:"Grilled Bangus (Half) w/ Rice", price:110, img:"assets/menu/bangus.jpg" },
+    { cat:"grilled", group:"Grilled Favorites", icon:"🐟", name:"Grilled Tilapia w/ Rice", price:150, img:"assets/menu/tilapia-with-rice.jpg" },
+    { cat:"grilled", group:"Grilled Favorites", icon:"🥓", name:"Grilled Liempo w/ Rice", price:155, img:"assets/menu/liempo.jpg" },
+    { cat:"grilled", group:"Grilled Favorites", icon:"🐟", name:"Grilled Bangus Ala-carte", price:190, img:"assets/menu/bangus.jpg" },
+    { cat:"grilled", group:"Grilled Favorites", icon:"🐟", name:"Grilled Tilapia Ala-carte", price:120, img:"assets/menu/tilapia-ala-carte.jpg" },
+    { cat:"grilled", group:"Grilled Favorites", icon:"🥓", name:"Grilled Liempo Ala-carte", price:125, img:"assets/menu/liempo.jpg" },
+    // Sides / Rice
+    { cat:"sides", group:"Rice Options", icon:"🍚", name:"Plain Rice", price:29, img:"assets/menu/plain-rice.jpg" },
+    { cat:"sides", group:"Rice Options", icon:"🍚", name:"Java Rice", price:40, img:"assets/menu/java-rice.jpg" },
+    { cat:"sides", group:"Rice Options", icon:"🍚", name:"Garlic Rice", price:40, img:"assets/menu/garlic-rice.jpg" },
+    // Solo Meals
+    { cat:"solo", group:"Solo Meals", icon:"🥘", name:"Kansi Beef", price:199, tag:"10 mins prep", img:"assets/menu/kansi-beef.jpg" },
+    { cat:"solo", group:"Solo Meals", icon:"🥘", name:"Kansi Pata", price:160, tag:"10 mins prep", img:"assets/menu/kansi-pata.jpg" },
+    { cat:"solo", group:"Solo Meals", icon:"🥘", name:"Bulalo", price:199, tag:"10 mins prep", img:"assets/menu/bulalo.jpg" },
+    { cat:"solo", group:"Solo Meals", icon:"🥘", name:"Sinigang na Hipon", price:199, tag:"10 mins prep", img:"assets/menu/sinigang-hipon.jpg" },
+    { cat:"solo", group:"Solo Meals", icon:"🥘", name:"Sinigang na Baboy", price:165, tag:"10 mins prep", img:"assets/menu/sinigang-baboy.jpg" },
+    { cat:"solo", group:"Solo Meals", icon:"🥘", name:"Sinigang na Bangus", price:145, tag:"10 mins prep", img:"assets/menu/sinigang-bangus.jpg" },
+  ];
+
+  const formatPrice = n => "₱" + n.toFixed(2);
+
+  const grid = document.getElementById("menuGrid");
+  grid.innerHTML = menuData.map(item => `
+    <div class="menu-card reveal visible" data-cat="${item.cat}">
+      <div class="menu-card-photo">
+        <img src="${item.img}" alt="${item.name}" loading="lazy">
+        <span class="menu-card-cat">${item.icon}</span>
+        <span class="price">${formatPrice(item.price)}</span>
+      </div>
+      <div class="menu-card-body">
+        <div class="group-label">${item.group}</div>
+        <h3>${item.name}</h3>
+        ${item.tag ? `<span class="tag">${item.tag}</span>` : ""}
+      </div>
+    </div>
+  `).join("");
+
+  const cards = document.querySelectorAll(".menu-card");
+  const filterBtns = document.querySelectorAll(".filter-btn");
+
+  function applyFilter(filter){
+    cards.forEach(card => {
+      const match = filter === "all" || card.dataset.cat === filter;
+      card.classList.toggle("hide", !match);
+    });
+    filterBtns.forEach(b => b.classList.toggle("active", b.dataset.filter === filter));
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => applyFilter(btn.dataset.filter));
+  });
+
+  document.querySelectorAll("[data-filter-link]").forEach(link => {
+    link.addEventListener("click", (e) => {
+      const f = link.dataset.filterLink;
+      setTimeout(() => applyFilter(f), 300);
+    });
+  });
+
+  /* ---------- HEADER SCROLL STATE ---------- */
+  const header = document.getElementById("siteHeader");
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("scrolled", window.scrollY > 30);
+  }, { passive:true });
+
+  /* ---------- MOBILE NAV ---------- */
+  const hamburger = document.getElementById("hamburgerBtn");
+  const mobileNav = document.getElementById("mobileNav");
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("open");
+    mobileNav.classList.toggle("open");
+  });
+  document.querySelectorAll(".mobile-link").forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("open");
+      mobileNav.classList.remove("open");
+    });
+  });
+
+  /* ---------- ACTIVE NAV LINK ---------- */
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        navLinks.forEach(link => {
+          link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  sections.forEach(sec => navObserver.observe(sec));
+
+  /* ---------- SCROLL REVEAL ---------- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.15 });
+  document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+  /* ---------- EMBER PARTICLES ---------- */
+  const embersEl = document.getElementById("embers");
+  const emberCount = window.innerWidth < 640 ? 12 : 22;
+  for (let i=0; i<emberCount; i++){
+    const e = document.createElement("div");
+    e.className = "ember";
+    const size = 2 + Math.random()*4;
+    e.style.width = size + "px";
+    e.style.height = size + "px";
+    e.style.left = Math.random()*100 + "%";
+    e.style.setProperty("--drift", (Math.random()*60-30) + "px");
+    e.style.animationDuration = (6 + Math.random()*8) + "s";
+    e.style.animationDelay = (Math.random()*10) + "s";
+    embersEl.appendChild(e);
+  }
+
+  /* ---------- CONTACT FORM ---------- */
+  const form = document.getElementById("contactForm");
+  const success = document.getElementById("formSuccess");
+  const error = document.getElementById("formError");
+  const submitBtn = document.getElementById("contactSubmitBtn");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    success.classList.remove("show");
+    error.classList.remove("show");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/sugbahanfeels@gmail.com", {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success !== "true") throw new Error(data.message || "Request failed");
+      success.classList.add("show");
+      form.reset();
+      setTimeout(() => success.classList.remove("show"), 6000);
+    } catch (err) {
+      error.classList.add("show");
+      setTimeout(() => error.classList.remove("show"), 6000);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send Message";
+    }
+  });
+
+  /* ---------- FOOTER YEAR ---------- */
+  document.getElementById("year").textContent = "© " + new Date().getFullYear() + " Sugbahan. All rights reserved.";
+
+})();
+</script>
+</body>
+</html>
