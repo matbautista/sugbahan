@@ -300,11 +300,12 @@
   }
   .order-card:hover{ transform:translateY(-8px); background:rgba(255,255,255,.09); box-shadow:var(--shadow); }
   .order-card .logo-dot{
-    width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.8rem;
-    margin-bottom:6px;
+    width:104px; height:76px; border-radius:16px; display:flex; align-items:center; justify-content:center;
+    background:#fff; padding:10px; margin-bottom:6px;
   }
-  .order-card.pink .logo-dot{ background:#D6006F; box-shadow:0 10px 26px rgba(214,0,111,.45); }
-  .order-card.green .logo-dot{ background:#00B14F; box-shadow:0 10px 26px rgba(0,177,79,.45); }
+  .order-card .logo-dot img{ width:100%; height:100%; object-fit:contain; }
+  .order-card.pink .logo-dot{ box-shadow:0 10px 26px rgba(214,0,111,.45); }
+  .order-card.green .logo-dot{ box-shadow:0 10px 26px rgba(0,177,79,.45); }
   .order-card h3{ font-size:1.2rem; }
   .order-card p{ color:var(--cream-dim); font-size:.9rem; }
   .direct-note{ margin-top:40px; color:var(--cream-dim); font-size:.95rem; }
@@ -368,9 +369,13 @@
     border:1px solid rgba(255,255,255,.1);
   }
   .footer-social a:hover{ background:var(--terracotta); border-color:var(--terracotta); }
+  .footer-social a.brand-icon{ width:56px; border-radius:10px; background:#fff; border-color:#fff; padding:6px 8px; }
+  .footer-social a.brand-icon img{ width:100%; height:100%; object-fit:contain; }
+  .footer-social a.brand-icon:hover{ background:#fff; border-color:var(--gold); transform:translateY(-2px); }
   .footer-bottom{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; font-size:.82rem; color:var(--cream-dim); }
   .footer-bottom .badges{ display:flex; gap:10px; }
-  .footer-bottom .badges span{ background:rgba(255,255,255,.06); padding:5px 12px; border-radius:100px; font-size:.75rem; }
+  .footer-bottom .badges span{ display:inline-flex; align-items:center; gap:7px; background:#fff; padding:5px 12px 5px 6px; border-radius:100px; font-size:.75rem; color:var(--ink); font-weight:600; }
+  .footer-bottom .badges img{ height:20px; width:auto; object-fit:contain; }
 
   .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
   .reveal.visible{ opacity:1; transform:translateY(0); }
@@ -548,13 +553,13 @@
     </div>
     <div class="order-cards">
       <a href="https://www.foodpanda.ph" target="_blank" rel="noopener" class="order-card pink reveal">
-        <div class="logo-dot">🐼</div>
+        <div class="logo-dot"><img src="assets/foodpanda-logo.png" alt="Foodpanda logo"></div>
         <h3>Foodpanda</h3>
         <p>Certified Partner — order Sugbahan for delivery via Foodpanda.</p>
         <span class="btn btn-light">Order on Foodpanda</span>
       </a>
       <a href="https://food.grab.com/ph/en/" target="_blank" rel="noopener" class="order-card green reveal">
-        <div class="logo-dot">🛵</div>
+        <div class="logo-dot"><img src="assets/grabfood-logo.png" alt="GrabFood logo"></div>
         <h3>GrabFood</h3>
         <p>Certified Partner — order Sugbahan for delivery via GrabFood.</p>
         <span class="btn btn-light">Order on GrabFood</span>
@@ -652,8 +657,8 @@
         <div class="footer-social">
           <a href="#" aria-label="Facebook">📘</a>
           <a href="#" aria-label="Instagram">📷</a>
-          <a href="https://www.foodpanda.ph" target="_blank" rel="noopener" aria-label="Foodpanda">🐼</a>
-          <a href="https://food.grab.com/ph/en/" target="_blank" rel="noopener" aria-label="GrabFood">🛵</a>
+          <a href="https://www.foodpanda.ph" target="_blank" rel="noopener" aria-label="Foodpanda" class="brand-icon"><img src="assets/foodpanda-logo.png" alt=""></a>
+          <a href="https://food.grab.com/ph/en/" target="_blank" rel="noopener" aria-label="GrabFood" class="brand-icon"><img src="assets/grabfood-logo.png" alt=""></a>
         </div>
       </div>
       <div class="footer-col">
@@ -686,8 +691,8 @@
     <div class="footer-bottom">
       <span id="year"></span>
       <div class="badges">
-        <span>🐼 Foodpanda Certified</span>
-        <span>🛵 GrabFood Certified</span>
+        <span><img src="assets/foodpanda-logo.png" alt="">Foodpanda Certified</span>
+        <span><img src="assets/grabfood-logo.png" alt="">GrabFood Certified</span>
       </div>
     </div>
   </div>
