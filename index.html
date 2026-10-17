@@ -872,6 +872,10 @@
     error.classList.remove("show");
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
+    // FormSubmit can take up to a minute; reassure the visitor so they don't leave or resend
+    const slowTimer = setTimeout(() => {
+      submitBtn.textContent = "Still sending — this can take up to a minute...";
+    }, 8000);
 
     try {
       const res = await fetch("https://formsubmit.co/ajax/sugbahan.grill@gmail.com", {
@@ -888,6 +892,7 @@
       error.classList.add("show");
       setTimeout(() => error.classList.remove("show"), 6000);
     } finally {
+      clearTimeout(slowTimer);
       submitBtn.disabled = false;
       submitBtn.textContent = "Send Message";
     }
