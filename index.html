@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sugbahan | Bacolod's Best Grilled Chicken Inasal</title>
-<meta name="description" content="Sugbahan - Taste the Difference, Bacolod's Best Grilled Chicken. Authentic Chicken Inasal, Kansi, Sinigang and grilled Filipino favorites. Order via Foodpanda or GrabFood.">
+<meta name="description" content="Sugbahan - Taste the Difference, Bacolod's Best Grilled Chicken. Authentic Chicken Inasal, Kansi, Sinigang and grilled Filipino favorites. Order via Foodpanda, GrabFood, or ShopeeFood.">
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,6 +161,7 @@
   .badge-chip .dot{ width:9px; height:9px; border-radius:50%; }
   .badge-chip.pink .dot{ background:#D6006F; box-shadow:0 0 10px #D6006F; }
   .badge-chip.green .dot{ background:#00B14F; box-shadow:0 0 10px #00B14F; }
+  .badge-chip.orange .dot{ background:#EE4D2D; box-shadow:0 0 10px #EE4D2D; }
 
   .hero-visual{ position:relative; display:flex; align-items:center; justify-content:center; }
   .plate{
@@ -295,7 +296,7 @@
     background:radial-gradient(circle at 20% 20%, rgba(216,25,32,.25), transparent 55%), radial-gradient(circle at 85% 80%, rgba(245,197,24,.18), transparent 55%);
   }
   .order .container{ position:relative; z-index:1; }
-  .order-cards{ display:grid; grid-template-columns:1fr 1fr; gap:26px; max-width:760px; margin:46px auto 0; }
+  .order-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; max-width:1100px; margin:46px auto 0; }
   .order-card{
     background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:20px; padding:36px 28px;
     display:flex; flex-direction:column; align-items:center; gap:14px; transition:.3s ease;
@@ -308,6 +309,10 @@
   .order-card .logo-dot img{ width:100%; height:100%; object-fit:contain; }
   .order-card.pink .logo-dot{ box-shadow:0 10px 26px rgba(214,0,111,.45); }
   .order-card.green .logo-dot{ box-shadow:0 10px 26px rgba(0,177,79,.45); }
+  .order-card.orange .logo-dot{ box-shadow:0 10px 26px rgba(238,77,45,.45); }
+  /* Partner without a store link yet (add an href to make it clickable) */
+  a.order-card:not([href]), a.badge-chip:not([href]), .footer-social a.brand-icon:not([href]){ cursor:default; }
+  a.order-card:not([href]):hover{ transform:none; }
   .order-card h3{ font-size:1.2rem; }
   .order-card p{ color:var(--cream-dim); font-size:.9rem; }
   .direct-note{ margin-top:40px; color:var(--cream-dim); font-size:.95rem; }
@@ -463,6 +468,7 @@
         <span class="label">Order via</span>
         <a href="https://www.foodpanda.ph/restaurant/snf1/sugbahan-grilled-chicken-and-resto-pasig" target="_blank" rel="noopener" class="badge-chip pink"><span class="dot"></span> Foodpanda Certified Partner</a>
         <a href="https://food.grab.com/ph/en/restaurant/sugbahan-chicken-inasal-and-resto-pasig-delivery/2-C7TVA8A1T2M1J2" target="_blank" rel="noopener" class="badge-chip green"><span class="dot"></span> GrabFood Certified Partner</a>
+        <a class="badge-chip orange"><span class="dot"></span> ShopeeFood Certified Partner</a>
       </div>
     </div>
     <div class="hero-visual">
@@ -509,7 +515,7 @@
         <div class="highlight-card reveal">
           <span class="icon">🛵</span>
           <h4>Delivered to Your Door</h4>
-          <p>Order your favorites on Foodpanda or GrabFood.</p>
+          <p>Order your favorites on Foodpanda, GrabFood, or ShopeeFood.</p>
         </div>
       </div>
     </div>
@@ -548,7 +554,7 @@
     <div class="section-head center reveal" style="margin:0 auto;">
       <div class="eyebrow" style="justify-content:center;">Delivery</div>
       <h2>Order Online — Fast, Fresh, Delivered</h2>
-      <p>Craving Sugbahan right now? We're a certified partner on both major delivery apps.</p>
+      <p>Craving Sugbahan right now? We're a certified partner on all major delivery apps.</p>
     </div>
     <div class="order-cards">
       <a href="https://www.foodpanda.ph/restaurant/snf1/sugbahan-grilled-chicken-and-resto-pasig" target="_blank" rel="noopener" class="order-card pink reveal">
@@ -562,6 +568,13 @@
         <h3>GrabFood</h3>
         <p>Certified Partner — order Sugbahan for delivery via GrabFood.</p>
         <span class="btn btn-light">Order on GrabFood</span>
+      </a>
+      <!-- TODO: add href="<ShopeeFood store link>" target="_blank" rel="noopener" once available -->
+      <a class="order-card orange reveal">
+        <div class="logo-dot"><img src="assets/shopeefood-logo.png" alt="ShopeeFood logo"></div>
+        <h3>ShopeeFood</h3>
+        <p>Certified Partner — order Sugbahan for delivery via ShopeeFood in the Shopee app.</p>
+        <span class="btn btn-light">Search Sugbahan on ShopeeFood</span>
       </a>
     </div>
     <p class="direct-note reveal">Prefer to order directly? Call or message us at <a href="tel:+639281489134">+63 928 148 9134</a></p>
@@ -603,7 +616,7 @@
           <div class="icon-box">🛵</div>
           <div>
             <h4>Delivery Partners</h4>
-            <p>Foodpanda Certified Partner &amp; GrabFood Certified Partner</p>
+            <p>Foodpanda, GrabFood &amp; ShopeeFood Certified Partner</p>
           </div>
         </div>
       </div>
@@ -658,6 +671,7 @@
           <a href="#" aria-label="Instagram">📷</a>
           <a href="https://www.foodpanda.ph/restaurant/snf1/sugbahan-grilled-chicken-and-resto-pasig" target="_blank" rel="noopener" aria-label="Foodpanda" class="brand-icon"><img src="assets/foodpanda-logo.png" alt=""></a>
           <a href="https://food.grab.com/ph/en/restaurant/sugbahan-chicken-inasal-and-resto-pasig-delivery/2-C7TVA8A1T2M1J2" target="_blank" rel="noopener" aria-label="GrabFood" class="brand-icon"><img src="assets/grabfood-logo.png" alt=""></a>
+          <a aria-label="ShopeeFood" class="brand-icon"><img src="assets/shopeefood-logo.png" alt=""></a>
         </div>
       </div>
       <div class="footer-col">
@@ -691,6 +705,7 @@
       <div class="badges">
         <span><img src="assets/foodpanda-logo.png" alt="">Foodpanda Certified</span>
         <span><img src="assets/grabfood-logo.png" alt="">GrabFood Certified</span>
+        <span><img src="assets/shopeefood-logo.png" alt="">ShopeeFood Certified</span>
       </div>
     </div>
   </div>
