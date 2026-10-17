@@ -749,13 +749,16 @@
     { cat:"solo", group:"Solo Meals", icon:"🥘", name:"Sinigang na Bangus", price:145, tag:"10 mins prep", img:"assets/menu/sinigang-bangus.jpg" },
   ];
 
+  // Bump this when menu photos change so browsers fetch the new files
+  const IMG_VERSION = "2026-10-17";
+
   const formatPrice = n => "₱" + n.toFixed(2);
 
   const grid = document.getElementById("menuGrid");
   grid.innerHTML = menuData.map(item => `
     <div class="menu-card reveal visible" data-cat="${item.cat}">
       <div class="menu-card-photo">
-        <img src="${item.img}" alt="${item.name}" loading="lazy">
+        <img src="${item.img}?v=${IMG_VERSION}" alt="${item.name}" loading="lazy">
         <span class="menu-card-cat">${item.icon}</span>
         <span class="price">${formatPrice(item.price)}</span>
       </div>
