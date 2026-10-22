@@ -5,7 +5,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sugbahan | Bacolod's Best Grilled Chicken Inasal</title>
 <meta name="description" content="Sugbahan - Taste the Difference, Bacolod's Best Grilled Chicken. Authentic Chicken Inasal, Kansi, Sinigang and grilled Filipino favorites. Order via Foodpanda, GrabFood, or ShopeeFood.">
+<link rel="canonical" href="https://sugbahan.com/">
 <link rel="icon" type="image/png" href="assets/logo.png">
+
+<!-- Link previews (Facebook, Messenger, Viber, etc.) -->
+<meta property="og:type" content="restaurant">
+<meta property="og:site_name" content="Sugbahan">
+<meta property="og:title" content="Sugbahan | Bacolod's Best Grilled Chicken Inasal">
+<meta property="og:description" content="Authentic charcoal-grilled Chicken Inasal, Kansi, Sinigang and Filipino favorites in Pasig City. Order via Foodpanda, GrabFood, or ShopeeFood.">
+<meta property="og:url" content="https://sugbahan.com/">
+<meta property="og:image" content="https://sugbahan.com/assets/hero-plate.jpg">
+<meta property="og:image:width" content="900">
+<meta property="og:image:height" content="756">
+<meta property="og:image:alt" content="Sugbahan charcoal-grilled chicken inasal">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Restaurant info for Google search -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Sugbahan",
+  "url": "https://sugbahan.com/",
+  "image": "https://sugbahan.com/assets/hero-plate.jpg",
+  "logo": "https://sugbahan.com/assets/logo.png",
+  "description": "Bacolod-style charcoal-grilled Chicken Inasal and Filipino comfort food.",
+  "servesCuisine": ["Filipino", "Chicken Inasal", "Grilled"],
+  "priceRange": "₱₱",
+  "telephone": "+63-2-8442-0743",
+  "email": "sugbahan.grill@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "31 Monaco Street, Ciudad Grande II, Ortigas Ave. Ext., Brgy. Rosario",
+    "addressLocality": "Pasig City",
+    "addressRegion": "Metro Manila",
+    "addressCountry": "PH"
+  },
+  "hasMenu": "https://sugbahan.com/#menu",
+  "sameAs": [
+    "https://www.foodpanda.ph/restaurant/snf1/sugbahan-grilled-chicken-and-resto-pasig",
+    "https://food.grab.com/ph/en/restaurant/sugbahan-chicken-inasal-and-resto-pasig-delivery/2-C7TVA8A1T2M1J2"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
@@ -412,6 +454,15 @@
     .brand{ font-size:1.1rem; gap:8px; }
     .brand-logo{ width:40px; height:33px; }
   }
+
+  /* Respect the visitor's "reduce motion" setting */
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *,*::before,*::after{ animation:none !important; transition:none !important; }
+    .embers{ display:none; }
+    .hero-seal{ transform:translateX(-50%) rotate(-3deg); }
+    .reveal{ opacity:1; transform:none; }
+  }
 </style>
 </head>
 <body>
@@ -430,8 +481,8 @@
       </ul>
     </nav>
     <div class="header-cta">
-      <a href="tel:+6328442743" class="btn btn-outline">Call Us</a>
-      <a href="#menu" class="btn btn-primary">Order Now</a>
+      <a href="tel:+63284420743" class="btn btn-outline">Call Us</a>
+      <a href="#order" class="btn btn-primary">Order Now</a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -446,7 +497,7 @@
   <a href="#menu" class="mobile-link">Menu</a>
   <a href="#order" class="mobile-link">Order</a>
   <a href="#contact" class="mobile-link">Contact</a>
-  <a href="#menu" class="btn btn-primary mobile-link">Order Now</a>
+  <a href="#order" class="btn btn-primary mobile-link">Order Now</a>
 </div>
 
 <!-- HERO -->
@@ -609,7 +660,7 @@
           <div class="icon-box">☎️</div>
           <div>
             <h4>Telephone</h4>
-            <p><a href="tel:+6328442743">+63 (02) 8442 0743</a></p>
+            <p><a href="tel:+63284420743">+63 (02) 8442 0743</a></p>
           </div>
         </div>
         <div class="contact-info-item reveal">
@@ -667,8 +718,6 @@
         <a href="#home" class="brand"><span class="brand-logo"><img src="assets/logo.png" alt="Sugbahan logo"></span>Sugbahan</a>
         <p>Taste the Difference, Bacolod's Best Grilled Chicken. Authentic inasal and Filipino grilled comfort food, made fresh daily.</p>
         <div class="footer-social">
-          <a href="#" aria-label="Facebook">📘</a>
-          <a href="#" aria-label="Instagram">📷</a>
           <a href="https://www.foodpanda.ph/restaurant/snf1/sugbahan-grilled-chicken-and-resto-pasig" target="_blank" rel="noopener" aria-label="Foodpanda" class="brand-icon"><img src="assets/foodpanda-logo.png" alt=""></a>
           <a href="https://food.grab.com/ph/en/restaurant/sugbahan-chicken-inasal-and-resto-pasig-delivery/2-C7TVA8A1T2M1J2" target="_blank" rel="noopener" aria-label="GrabFood" class="brand-icon"><img src="assets/grabfood-logo.png" alt=""></a>
           <a aria-label="ShopeeFood" class="brand-icon"><img src="assets/shopeefood-logo.png" alt=""></a>
@@ -689,6 +738,7 @@
           <li><a href="#menu" data-filter-link="inasal">Chicken Inasal</a></li>
           <li><a href="#menu" data-filter-link="kansi-sinigang">Kansi &amp; Sinigang</a></li>
           <li><a href="#menu" data-filter-link="grilled">Grilled Favorites</a></li>
+          <li><a href="#menu" data-filter-link="sides">Sides</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -696,7 +746,7 @@
         <ul>
           <li><a href="mailto:sugbahan.grill@gmail.com">sugbahan.grill@gmail.com</a></li>
           <li><a href="tel:+639281489134">+63 928 148 9134</a></li>
-          <li><a href="tel:+6328442743">+63 (02) 8442 0743</a></li>
+          <li><a href="tel:+63284420743">+63 (02) 8442 0743</a></li>
         </ul>
       </div>
     </div>
